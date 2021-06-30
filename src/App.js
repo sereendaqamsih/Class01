@@ -60,8 +60,10 @@ toggleShowModal = ()=>{
     return (
       <div>
         <Header/>
+       
         <Main selectCard={this.handleShowModal } data={this.state.dataInfoSelected}  />
         <SelectedBeast close={this.toggleShowModal} showModal1={this.state.showModal } data1={this.state.dataInfoSelected}/>
+        
         <Footer/>
 
       </div>
