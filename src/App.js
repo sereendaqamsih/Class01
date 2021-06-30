@@ -1,9 +1,9 @@
 import React from 'react';
+import data from './components/data.json';
+import SelectedBeast from './components/SelectedBeast.js';
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
-import SelectedBeast from "./SelectedBeast.js";
-import data from "./data.json";
 
 
 
@@ -11,27 +11,52 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state={
-        clickSatus1:false,
-        closeClick:false,
+      showModal: false,
+        dataInfo:{},
+        hornsData:data,
+
+
     }
 }
-showModle=()=>{
+handleShowModal = (key) => {
+  /*this.setState(this.toggleShowModal);
+  if (this.state.showModal === false) {
+    this.setState({
+      dataInfo: data,
+    });
+  }*/
+    
   this.setState({
-      clickSatus1:this.state.clickSatus1 = true,
-  
-      })}
-      handleClose=()=>{
-        this.setState({   closeClick:this.state.closeClick=true, })
+    showModal:true,
+    hornsData:key,
+})
+}
+
+/*toggleShowModal = (state) => {
+  return {
+    showModal: !state.showModal
+  };
+}*/
+
+toggleShowModal = ()=>{
+  this.setState({
+    showModal:false,
+    dataInfo:{},
+
+  })
+}
+        
           
-      }
+      
   render() {
-    if(!this.props.show){
+   /* if(!this.props.showModal){
       return null;
-  }
+  }*/
     return (
       <div>
         <Header/>
-        <Main/>
+        <Main selectCard={this.handleShowModal } data={this.state.hornsData} />
+        <SelectedBeast close={this.toggleShowModal} showModal1={this.state.showModal } data1={this.state.dataInfo}/>
         <Footer/>
 
       </div>

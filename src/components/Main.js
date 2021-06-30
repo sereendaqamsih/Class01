@@ -9,7 +9,9 @@ class Main extends React.Component {
             <div>
                 {data.map((item,index)=>{
                     return(
-                        <HornedBeast title={item.title} description={item.description} image={item.image_url} altImage={item.keyword} horns={item.horns} />
+                        <HornedBeast title={item.title} description={item.description} image={item.image_url} altImage={item.keyword} horns={item.horns}
+                         modalSelect={this.props.selectCard} 
+                        />
                     )
                 })}
      

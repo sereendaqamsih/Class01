@@ -16,9 +16,16 @@ class HornedBeast extends React.Component {
         this.setState({
             numberOfPets:this.state.numberOfPets+1,
         })
+
     }
     
-    
+    clickTorender = () => {
+        this.props.modalSelect({
+            title: this.props.title,
+            image_url: this.props.image_url,
+            description: this.props.description
+        })
+    }
 
 
     render () {
@@ -35,11 +42,13 @@ class HornedBeast extends React.Component {
         <p>💚 {this.state.numberOfPets}</p>*/}
 
 <Card style={{ width: '18rem',display: 'inline-flex',flex: 1 }}>
-  <Card.Img variant="top" onClick={this.showModle}   showCard ={this.showModle} src={this.props.image} alt={this.props.altImage} width={300}/>
+  <Card.Img variant="top" onClick={this.clickTorender} src={this.props.image} alt={this.props.altImage} width={300}/>
   <Card.Body>
     <Card.Title>{this.props.title}</Card.Title>
-    <Card.title> Cick on image if you like it!</Card.title>
-    <Button  variant="primary" onClick={this.increaseNoOfPet}>💚 {this.state.numberOfPets}</Button>
+    
+    <Button  variant="primary" onClick={this.increaseNoOfPets}>💚</Button>
+    
+<Card.Text> {this.state.numberOfPets}</Card.Text>
   </Card.Body>
 </Card>
  
