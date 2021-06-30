@@ -8,27 +8,32 @@ import Footer from './components/Footer';
 
 
 class App extends React.Component {
+
   constructor(props){
     super(props);
     this.state={
       showModal: false,
-        dataInfo:{},
+      dataInfoSelected:{},
         hornsData:data,
-
-
-    }
+ }
 }
 handleShowModal = (key) => {
+    let element = data.find(value=>{
+      if(value.title === key){
+       return value ;
+      }
+    })
+  
   /*this.setState(this.toggleShowModal);
   if (this.state.showModal === false) {
     this.setState({
       dataInfo: data,
     });
   }*/
-    
+    console.log(element);
   this.setState({
     showModal:true,
-    hornsData:key,
+    dataInfoSelected:element,
 })
 }
 
@@ -41,7 +46,7 @@ handleShowModal = (key) => {
 toggleShowModal = ()=>{
   this.setState({
     showModal:false,
-    dataInfo:{},
+    dataInfoSelected:{},
 
   })
 }
@@ -55,8 +60,8 @@ toggleShowModal = ()=>{
     return (
       <div>
         <Header/>
-        <Main selectCard={this.handleShowModal } data={this.state.hornsData} />
-        <SelectedBeast close={this.toggleShowModal} showModal1={this.state.showModal } data1={this.state.dataInfo}/>
+        <Main selectCard={this.handleShowModal } data={this.state.dataInfoSelected}  />
+        <SelectedBeast close={this.toggleShowModal} showModal1={this.state.showModal } data1={this.state.dataInfoSelected}/>
         <Footer/>
 
       </div>
