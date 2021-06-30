@@ -26,14 +26,13 @@ if (array.length==0){ this.setState({newData:data})
         return(
             <div>
    <FormInfo submitForm={this.submitForm}/>
-    {this.state.newData.map((item,index)=>{
-        return(
-            <HornedBeast title={item.title} description={item.description} image_url={item.image_url} altImage={item.keyword} horns={item.horns}
-            modalSelect={this.props.selectCard} key={index}
-           />
-        )
-    })}
-
+   {data.map((item,index)=>{
+                    return(
+                        <HornedBeast title={item.title} description={item.description} image_url={item.image_url} altImage={item.keyword} horns={item.horns}
+                         modalSelect={this.props.selectCard} key={index}
+                        />
+                    )
+                })}
         </div>
         )
 
