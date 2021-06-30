@@ -8,27 +8,31 @@ class Main extends React.Component {
         super(props)  
     this.state={
         newData:data,
-    }  }
+    }}
 
     submitForm = (event) =>{
     event.preventDefault();
-    this.setState ({
-    newData= event.target.value ,
-})
-    }
+    let valueEvent=event.target.value;
+    let array =[];
+    array =data.filter(element=>{
+        if (element.horns==valueEvent){return true;}
+    })
+    this.setState ({newData:array})
+if (array.length==0){ this.setState({newData:data})
+}
+}
       
     render() {
         return(
             <div>
-                
-                {data.map((item,index)=>{
-                    return(
-                        <HornedBeast title={item.title} description={item.description} image_url={item.image_url} altImage={item.keyword} horns={item.horns}
-                         modalSelect={this.props.selectCard} key={index}
-                        />
-                    )
-                })}
-     
+   <FormInfo submitForm={this.submitForm}/>
+    {this.state.newData.map((item,index)=>{
+        return(
+            <HornedBeast title={item.title} description={item.description} image_url={item.image_url} altImage={item.keyword} horns={item.horns}
+            modalSelect={this.props.selectCard} key={index}
+           />
+        )
+    })}
 
         </div>
         )

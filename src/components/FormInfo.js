@@ -11,20 +11,15 @@ constructor(props){
 render(){
     return(
         <Form>
-  
         <Form.Label>You can choose to filter items by number of horns</Form.Label>
         <Form.Control onChange={this.props.submitForm} as='select' name='favoriteCatBreed' >
-            <option value='true'>All</option>
+            <option value='0'>All</option>
             <option value='1'>ONE</option>
             <option value='2'>TWO</option>
+            <option value='3'>THREE</option>
             <option value='100'>WOW</option>
-      
-      </Form.Control>
-      
-      
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+            </Form.Control>
+           
       </Form>
     )
 }
