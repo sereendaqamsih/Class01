@@ -13,14 +13,18 @@ class Main extends React.Component {
     submitForm = (event) =>{
     event.preventDefault();
     let valueEvent=event.target.value;
-    let array =[];
-    array =data.filter(element=>{
-        if (element.horns==valueEvent){return true;}
-    })
-    this.setState ({newData:array})
-if (array.length==0){ this.setState({newData:data})
-}
-}
+    let array ;
+    if (valueEvent>0){
+        array=data.filter(element=>{
+            return element.horns === Number(valueEvent);
+        })}
+        else {
+            array=data;
+        }
+        this.setState({
+            newData:array
+        })
+    }
       
     render() {
         return(
